@@ -7,7 +7,7 @@ on:
     branches: [ "master", "dev", "test" ]
 
 jobs:
-  build:
+  enviroment_configure:
     runs-on: ubuntu-latest
     environment: 
       name: ${{ github.ref_name }}
@@ -43,14 +43,11 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: "ap-southeast-1"
+  deploy_to_aws:
+    runs-on: ubuntu-latest
+    environment: 
+      name: ${{ github.ref_name }}
+    steps:
       - 
-        name: Check enviroment and aws configure
-        run: |
-          echo "Environment: ${{ github.ref_name }}"
-          aws configure list
-      # - 
-      #   name: Deploy to AWS
-      #   run: cdk deploy --require-approval=never
-      # - 
-      #   name: Destroy stack
-      #   run: cdk destroy --force
+        name: Deploy to AWS
+        run: cdk deploy --require-approval=never
