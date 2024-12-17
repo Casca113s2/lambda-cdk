@@ -4,8 +4,8 @@ import { LambdaCdkStack } from '../lib/lambda-cdk-stack';
 
 const app = new cdk.App();
 var env = process.env.GITHUB_REF_NAME;
-console.log(env);
-new LambdaCdkStack(app, 'LambdaCdkStack', {
+var stackName = 'LambdaCdkStack-' + env;
+new LambdaCdkStack(app, stackName, env, {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */

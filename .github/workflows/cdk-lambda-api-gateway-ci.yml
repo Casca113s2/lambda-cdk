@@ -5,7 +5,7 @@ on:
     branches: [ "master", "dev", "test" ]
 
 jobs:
-  enviroment_configure_and_AWS_deploy:
+  configure_and_AWS_deploy:
     runs-on: ubuntu-latest
     environment: 
       name: ${{ github.ref_name == 'master' && 'prod' || github.ref_name }}
