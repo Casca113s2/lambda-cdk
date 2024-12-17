@@ -12,7 +12,7 @@ export class LambdaCdkStack extends cdk.Stack {
 
     // Define the Lambda function resource
     const helloWorldFunction = new lambda.Function(this, functionName, {
-      runtime: lambda.Runtime.PYTHON_3_13, // Choose any supported Node.js runtime
+      runtime: lambda.Runtime.NODEJS_22_X, // Choose any supported Node.js runtime
       code: lambda.Code.fromAsset('lambda'), // Points to the lambda directory
       handler: 'hello.handler', // Points to the 'hello' file in the lambda directory
     });    
@@ -22,7 +22,7 @@ export class LambdaCdkStack extends cdk.Stack {
       handler: helloWorldFunction,
       proxy: false,
     });
-        
+    
     // Define the '/hello' resource with a GET method
     const helloResource = api.root.addResource('hello');
     helloResource.addMethod('GET');
