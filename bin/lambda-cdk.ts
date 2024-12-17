@@ -3,8 +3,8 @@ import * as cdk from 'aws-cdk-lib';
 import { LambdaCdkStack } from '../lib/lambda-cdk-stack';
 
 const app = new cdk.App();
-var stackName = process.env.STACK_NAME;
-console.log(stackName);
+var env = process.env
+console.log(env);
 new LambdaCdkStack(app, 'LambdaCdkStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
