@@ -3,7 +3,7 @@ import * as cdk from 'aws-cdk-lib';
 import { LambdaCdkStack } from '../lib/lambda-cdk-stack';
 
 const app = new cdk.App();
-var env = process.env.GITHUB_REF_NAME;
+var env = (process.env.GITHUB_REF_NAME == 'master' ? 'prod' : process.env.GITHUB_REF_NAME);
 var stackName = 'LambdaCdkStack-' + env;
 new LambdaCdkStack(app, stackName, env, {
   /* If you don't specify 'env', this stack will be environment-agnostic.
