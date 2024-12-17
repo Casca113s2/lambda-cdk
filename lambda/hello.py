@@ -9,7 +9,7 @@ def handler(event, context):
             "Content-Type": "application/json"
         },
         "body": json.dumps({
-            "message": "Hello World From dev!",
+            "message": "Hello World From prod!",
             "name" : json_name,
             "company" : json_company,
         })
