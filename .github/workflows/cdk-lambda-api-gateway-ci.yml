@@ -13,32 +13,32 @@ jobs:
       - 
         name: Checkout
         uses: actions/checkout@v4
-      - 
-        name: Set up Python 3.9
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.9"
-      - 
-        name: Set up Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: "22"
-      - 
-        name: Install CDK
-        run: |
-          npm install -g aws-cdk
-          aws --version
-          npm install ts-node --save-dev
-          npm install typescript -g 
-          npm install typescript --save-dev
-          npm install --save @types/aws-lambda
+      # - 
+      #   name: Set up Python 3.9
+      #   uses: actions/setup-python@v4
+      #   with:
+      #     python-version: "3.9"
+      # - 
+      #   name: Set up Node
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: "22"
+      # - 
+      #   name: Install CDK
+      #   run: |
+      #     npm install -g aws-cdk
+      #     aws --version
+      #     npm install ts-node --save-dev
+      #     npm install typescript -g 
+      #     npm install typescript --save-dev
+      #     npm install --save @types/aws-lambda
       -
         name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@master
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-          aws-region: "ap-southeast-1"
+          aws-region: ${{ secrets.AWS_REGION }}
       # - 
       #   name: Deploy to AWS
       #   run: cdk deploy --require-approval=never
